@@ -55,37 +55,41 @@ function replaceIconDeclarations(component, replace) {
 }
 
 module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
-  function addInput(options, modifier = '') {
+  function addInput(options, selector = null) {
+    selector = selector || options.selector;
     if (isEmpty(options)) {
       return
     }
 
-    addComponents({ [`.form-input${modifier}`]: options })
+    addComponents({ [selector]: options })
   }
 
-  function addTextarea(options, modifier = '') {
+  function addTextarea(options, selector = null) {
+    selector = selector || options.selector;
     if (isEmpty(options)) {
       return
     }
 
-    addComponents({ [`.form-textarea${modifier}`]: options })
+    addComponents({ [selector]: options })
   }
 
-  function addMultiselect(options, modifier = '') {
+  function addMultiselect(options, selector = null) {
+    selector = selector || options.selector;
     if (isEmpty(options)) {
       return
     }
 
-    addComponents({ [`.form-multiselect${modifier}`]: options })
+    addComponents({ [selector]: options })
   }
 
-  function addSelect(options, modifier = '') {
+  function addSelect(options, selector = null) {
+    selector = selector || options.selector;
     if (isEmpty(options)) {
       return
     }
 
     addComponents(replaceIconDeclarations({
-      [`.form-select${modifier}`]: merge({
+      [selector]: merge({
         '&::-ms-expand': {
           color: options.iconColor,
         },
@@ -102,13 +106,14 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
     }))
   }
 
-  function addCheckbox(options, modifier = '') {
+  function addCheckbox(options, selector = null) {
+    selector = selector || options.selector;
     if (isEmpty(options)) {
       return
     }
 
     addComponents(replaceIconDeclarations({
-      [`.form-checkbox${modifier}`]: merge({
+      [selector]: merge({
         ...isUndefined(options.borderWidth) ? {} : {
           '&::-ms-check': {
             '@media not print': {
@@ -126,13 +131,14 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
     }))
   }
 
-  function addRadio(options, modifier = '') {
+  function addRadio(options, selector = null) {
+    selector = selector || options.selector;
     if (isEmpty(options)) {
       return
     }
 
     addComponents(replaceIconDeclarations({
-      [`.form-radio${modifier}`]: merge({
+      [selector]: merge({
         ...isUndefined(options.borderWidth) ? {} : {
           '&::-ms-check': {
             '@media not print': {
@@ -161,14 +167,14 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
     addRadio(options.default.radio)
 
     Object.keys((({ default: _default, ...rest }) => rest)(options)).forEach(key => {
-      const modifier = `-${key}`
+      const selector = `${options[key].baseClass}-${key}`
 
-      addInput(options[key].input || {}, modifier)
-      addTextarea(options[key].textarea || {}, modifier)
-      addMultiselect(options[key].multiselect || {}, modifier)
-      addSelect(options[key].select || {}, modifier)
-      addCheckbox(options[key].checkbox || {}, modifier)
-      addRadio(options[key].radio || {}, modifier)
+      addInput(options[key].input || {}, selector)
+      addTextarea(options[key].textarea || {}, selector)
+      addMultiselect(options[key].multiselect || {}, selector)
+      addSelect(options[key].select || {}, selector)
+      addCheckbox(options[key].checkbox || {}, selector)
+      addRadio(options[key].radio || {}, selector)
     })
   }
 

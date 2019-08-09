@@ -1,7 +1,18 @@
 const defaultTheme = require('tailwindcss/resolveConfig')(require('tailwindcss/defaultConfig')).theme
 
+/*
+  selector: '.form-input' baseClass: '.form-input'
+    => .form-input
+    => .form-input-blue
+  selector: 'input' baseClass: '.form-input'
+    => input
+    => .form-input.blue
+*/
+
 module.exports = {
   input: {
+    selector: 'input',
+    baseClass: '.form-input',
     appearance: 'none',
     backgroundColor: defaultTheme.colors.white,
     borderColor: defaultTheme.borderColor.default,
@@ -24,6 +35,8 @@ module.exports = {
     },
   },
   textarea: {
+    selector: 'textarea',
+    baseClass: '.form-textarea',
     appearance: 'none',
     backgroundColor: defaultTheme.colors.white,
     borderColor: defaultTheme.borderColor.default,
@@ -46,6 +59,8 @@ module.exports = {
     },
   },
   multiselect: {
+    selector: 'multiselect',
+    baseClass: '.form-multiselect',
     appearance: 'none',
     backgroundColor: defaultTheme.colors.white,
     borderColor: defaultTheme.borderColor.default,
@@ -64,6 +79,8 @@ module.exports = {
     },
   },
   select: {
+    selector: 'select',
+    baseClass: '.form-select',
     appearance: 'none',
     colorAdjust: 'exact',
     '&::-ms-expand': {
@@ -94,6 +111,8 @@ module.exports = {
     },
   },
   checkbox: {
+    selector: 'checkbox',
+    baseClass: '.form-checkbox',
     appearance: 'none',
     colorAdjust: 'exact',
     '&::-ms-check': {
@@ -132,6 +151,8 @@ module.exports = {
     },
   },
   radio: {
+    selector: 'radio',
+    baseClass: '.form-radio',
     appearance: 'none',
     colorAdjust: 'exact',
     '&::-ms-check': {
