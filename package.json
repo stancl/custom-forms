@@ -1,9 +1,9 @@
 {
-  "name": "@tailwindcss/custom-forms",
+  "name": "@stancl/custom-forms",
   "version": "0.2.0",
   "description": "A better base for styling form elements with Tailwind CSS.",
   "main": "src/index.js",
-  "repository": "https://github.com/tailwindcss/custom-forms",
+  "repository": "https://github.com/stancl/custom-forms",
   "author": "Adam Wathan",
   "license": "MIT",
   "scripts": {
