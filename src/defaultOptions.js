@@ -11,7 +11,7 @@ const defaultTheme = require('tailwindcss/resolveConfig')(require('tailwindcss/d
 
 module.exports = {
   input: {
-    selector: 'input',
+    selector: 'input[type=text]',
     baseClass: '.form-input',
     appearance: 'none',
     backgroundColor: defaultTheme.colors.white,
@@ -59,7 +59,7 @@ module.exports = {
     },
   },
   multiselect: {
-    selector: 'multiselect',
+    selector: 'select[multiple=multiple]',
     baseClass: '.form-multiselect',
     appearance: 'none',
     backgroundColor: defaultTheme.colors.white,
@@ -111,7 +111,7 @@ module.exports = {
     },
   },
   checkbox: {
-    selector: 'checkbox',
+    selector: 'input[type=checkbox]',
     baseClass: '.form-checkbox',
     appearance: 'none',
     colorAdjust: 'exact',
@@ -151,7 +151,7 @@ module.exports = {
     },
   },
   radio: {
-    selector: 'radio',
+    selector: 'input[type=radio]',
     baseClass: '.form-radio',
     appearance: 'none',
     colorAdjust: 'exact',
