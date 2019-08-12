@@ -12,6 +12,7 @@ const isPlainObject = require('lodash/isPlainObject')
 const defaultOptions = require('./defaultOptions')
 const svgToDataUri = require('mini-svg-data-uri')
 const traverse = require('traverse')
+const omit = require('lodash/omit');
 
 function merge(...options) {
   function mergeCustomizer(objValue, srcValue, key, obj, src, stack) {
@@ -61,7 +62,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents({ [selector]: options })
+    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) })
   }
 
   function addTextarea(options, selector = null) {
@@ -70,7 +71,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents({ [selector]: options })
+    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) })
   }
 
   function addMultiselect(options, selector = null) {
@@ -79,7 +80,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents({ [selector]: options })
+    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) })
   }
 
   function addSelect(options, selector = null) {
@@ -98,7 +99,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
             paddingRight: options.paddingLeft, // Fix padding for print in IE
           },
         },
-      }, options)
+      }, omit(options, ['selector', 'baseClass']))
     }, ({ icon = options.icon, iconColor = options.iconColor }) => {
       return {
         backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
@@ -121,7 +122,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
             }
           },
         },
-      }, options)
+      }, omit(options, ['selector', 'baseClass']))
     }, ({ icon = options.icon, iconColor = options.iconColor }) => {
       return {
         '&:checked': {
@@ -146,7 +147,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
             }
           },
         },
-      }, options)
+      }, omit(options, ['selector', 'baseClass']))
     }, ({ icon = options.icon, iconColor = options.iconColor }) => {
       return {
         '&:checked': {
