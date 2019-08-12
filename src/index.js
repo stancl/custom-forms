@@ -62,7 +62,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) })
+    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) }, { respectPrefix: false })
   }
 
   function addTextarea(options, selector = null) {
@@ -71,7 +71,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) })
+    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) }, { respectPrefix: false })
   }
 
   function addMultiselect(options, selector = null) {
@@ -80,7 +80,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return
     }
 
-    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) })
+    addComponents({ [selector]: omit(options, ['selector', 'baseClass']) }, { respectPrefix: false })
   }
 
   function addSelect(options, selector = null) {
@@ -104,7 +104,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
       return {
         backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
       }
-    }))
+    }), { respectPrefix: false })
   }
 
   function addCheckbox(options, selector = null) {
@@ -129,7 +129,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
           backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
         }
       }
-    }))
+    }), { respectPrefix: false })
   }
 
   function addRadio(options, selector = null) {
@@ -154,7 +154,7 @@ module.exports = function ({ addUtilities, addComponents, theme, postcss }) {
           backgroundImage: `url("${svgToDataUri(isFunction(icon) ? icon(iconColor) : icon)}")`
         }
       }
-    }))
+    }), { respectPrefix: false })
   }
 
   function registerComponents() {
